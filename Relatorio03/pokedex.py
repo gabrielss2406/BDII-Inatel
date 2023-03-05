@@ -23,7 +23,12 @@ class Pokedex:
         return pokemons
 
     def get_final_evolutions(self):
-        final = self.db.collection.find({"next_evolution": {"$exists": False} })
+        final = self.db.collection.find({"next_evolution": {"$exists": False}})
         writeAJson(final, "Final_Evolutions")
         return final
 
+    def good_defense_types(self):
+        pokemons = self.db.collection.find({"weaknesses": {"$size": 1}})
+        print(pokemons)
+        writeAJson(pokemons, "Good_Defense_Types_Pokemons")
+        return pokemons
