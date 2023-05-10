@@ -1,0 +1,17 @@
+MATCH(n:CreditCard) RETURN COUNT(*);
+MATCH(n:BankAccount) RETURN SUM(n.balance);
+MATCH(n:BankAccount) RETURN AVG(n.balance);
+MATCH (n:MoneyTransfer) RETURN MIN(n.amount);
+MATCH (n:MoneyTransfer) RETURN MAX(n.amount);
+
+RETURN SQRT(25);
+RETURN LOG(100);
+RETURN ABS(-10);
+RETURN CEIL(2.1);
+RETURN ROUND(4.3);
+
+RETURN LOWER("TEXTACO");
+RETURN UPPER("textinho");
+RETURN LENGTH("Hello World");
+RETURN REPLACE("Texto de exemplo", "exemplo", "teste");
+RETURN SPLIT('Gabriel Siqueira', ' ');

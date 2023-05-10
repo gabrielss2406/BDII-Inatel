@@ -1,0 +1,34 @@
+1.1-
+MATCH(n) RETURN n
+
+1.2-
+MATCH(g:Game) WHERE g.ano > 2012 RETURN g
+
+1.3-
+MATCH (g:Game) WHERE g.genero = 'Terror' RETURN g
+
+1.4-
+MATCH (j:Jurado)-[r:JOGOU]->(g:Game) WHERE r.nota >= 7 RETURN g;
+
+2.1
+CREATE(g:Game{titulo:'Overwatch 2',genero:'Shooter',ano:2022});
+CREATE(g:Game{titulo:'Valorant',genero:'Shooter',ano:2020});
+CREATE(g:Game{titulo:'League of Legends',genero:'MOBA',ano:2009});
+CREATE(g:Game{titulo:'Pokemon FireRed',genero:'RPG',ano:2004});
+
+2.2
+CREATE(j:Jurado{nome:'Xico'});
+CREATE(j:Jurado{nome:'Gabs'});
+CREATE(j:Jurado{nome:'Thomas'});
+
+2.3
+MATCH(j:Jurado{nome:'Gabs'}),(g:Game{titulo:'Overwatch 2'})
+CREATE(j)-[:JOGOU{nota:10, horas: 800}]->(g);
+MATCH(j:Jurado{nome:'Xico'}),(g:Game{titulo:'Valorant'})
+CREATE(j)-[:JOGOU{nota:10, horas: 1200}]->(g);
+MATCH(j:Jurado{nome:'Gabs'}),(g:Game{titulo:'League of Legends'})
+CREATE(j)-[:JOGOU{nota:9, horas: 1500}]->(g);
+MATCH(j:Jurado{nome:'Thomas'}),(g:Game{titulo:'Minecraft'})
+CREATE(j)-[:JOGOU{nota:8, horas: 500}]->(g);
+MATCH(j:Jurado{nome:'Gabs'}),(g:Game{titulo:'Pokemon FireRed'})
+CREATE(j)-[:JOGOU{nota:8, horas: 400}]->(g);
